@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <div>
+            <input type="radio" name="radio" id="radio1">
+            <label for="radio1">Opcion 1</label>
+            <input type="radio" name="radio" id="radio2">
+            <label for="radio2">Opcion 2</label>
+            <input type="radio" name="radio" id="radio3">
+            <label for="radio3">Opcion 3</label>
+        </div> <button id="btn-radios" disabled>Radios</button>
+        
+        <div id="hidden">
+            <select name="region" id="region">
+                <option value="1">Select a region</option>
+            </select>
+            
+            <select name="country" id="country">
+                <option value="">Select a country</option>
+            </select>
+        </div>
+        <div style="margin-top: 15px; display: flex; align-items: center; gap: 20px;">
+            <div>
+                <input type="checkbox" name="terms" id="terms">
+                <label for="terms"></label>
+                <br>
+                <input type="checkbox" name="cond" id="cond">
+                <label for="cond"></label>
+            </div>
+            
+            <button type="submit" id="send">Send</button>
+        </div>
+    </form>
+    <script src="form.js"></script>
+</body>
+</html>

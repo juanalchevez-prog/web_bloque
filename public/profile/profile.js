@@ -1,0 +1,3 @@
+
+
+username.innerText = sessionStorage.username

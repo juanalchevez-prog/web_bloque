@@ -1,1 +1,21 @@
-#miparrafo {color : aqua; margin: 100px; border : 10px solid red; padding-top : 50px}
+#miparrafo {
+    color: rgb(115, 18, 206); 
+    margin: 100px; 
+    border: 10px solid black; 
+    padding-top: 10px;
+}
+
+.parrafo-destacado {
+    color: #ff5733;
+}
+
+p {
+    color: #4a4a4a;
+}
+
+img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
