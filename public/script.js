@@ -1,18 +1,32 @@
-console.log("Hola Mundo")
-//alert("alerta")
-
-const username = document.getElementById("in_username")
+const usuario = document.getElementById("in_usuario")
 const password = document.getElementById("in_password")
 const btnLogin = document.getElementById("btnLogin")
 
-const login = ()=>{
-    //alert(username.value+" "+password.value)
-    if (username.value === "Alfonso" && password.value === "Chevez"){
-        sessionStorage.username = username.value
-        localStorage.password = password.value
-        window.location = "/profile.html"
-    }else{
-        alert("credenciales incorrectas")
+const login = async () => {
+    if (!usuario.value || !password.value) {
+        alert("Ingresa usuario y contraseña")
+        return
+    }
+
+    const user = { username: usuario.value, password: password.value }
+
+    try {
+        const res = await fetch("http://localhost:4000/login", {
+            method: "post",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(user)
+        })
+        const data = await res.json()
+
+        if (res.ok && data.login === true) {
+            sessionStorage.username = data.user.name
+            window.location = "/profile/"
+        } else {
+            alert(data.message || "credenciales incorrectas")
+        }
+    } catch (err) {
+        console.error(err)
+        alert("No se pudo conectar con el servidor")
     }
 }
 
