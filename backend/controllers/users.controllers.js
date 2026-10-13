@@ -1,4 +1,5 @@
 import { getConnection, sql } from "../utils/db.js"
+import { hashPassword } from "../utils/password.js"
 
 export const getUsers = async (req, res) => {
     try {
@@ -39,7 +40,7 @@ export const postUser = async (req, res) => {
             .input("age", sql.Int, age)
             .input("points", sql.Int, points)
             .input("username", sql.VarChar, username)
-            .input("password", sql.VarChar, password)
+            .input("password", sql.VarChar, hashPassword(password))
             .query("insert into users (name, age, points, username, password) values (@name, @age, @points, @username, @password)")
         res.status(201).json(result)
     } catch (err) {
@@ -50,6 +51,9 @@ export const postUser = async (req, res) => {
 
 export const putUser = async (req, res) => {
     const { name, age, points, username, password } = req.body ?? {}
+    if (!password) {
+        return res.status(400).json({ message: "password es requerido" })
+    }
     try {
         const pool = await getConnection()
         const result = await pool.request()
@@ -57,7 +61,7 @@ export const putUser = async (req, res) => {
             .input("age", sql.Int, age)
             .input("points", sql.Int, points)
             .input("username", sql.VarChar, username)
-            .input("password", sql.VarChar, password)
+            .input("password", sql.VarChar, hashPassword(password))
             .input("id", sql.Int, req.params.id)
             .query("update users set name=@name, age=@age, points=@points, username=@username, password=@password where id=@id")
         res.json(result)
