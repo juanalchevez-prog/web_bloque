@@ -5,7 +5,7 @@ if (!userId) {
     window.location = "../index.html"
 } else {
     // el videojuego lee el ID de su propia URL
-    document.getElementById("juego").src = "webgl/index.html?id=" + encodeURIComponent(userId)
+    document.getElementById("juego").src = "webgl/Gammificacion%20web/index.html?id=" + encodeURIComponent(userId)
 }
 
 document.getElementById("btnLogout").addEventListener("click", () => {

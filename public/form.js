@@ -14,35 +14,32 @@ radio.addEventListener("click",()=>{
 
 send.disabled = true;
 const show = ()=>{
-    send.disabled = !(terms.checked && cond.checked)
+    send.disabled = !(term.checked && cond.checked)
 }
 
-terms.addEventListener("click",show)
+term.addEventListener("click",show)
 cond.addEventListener("click",show)
 
 const loadData = async ()=>{
     const res = await fetch("./country-region-data.json")
     const data = await res.json()
-    console.log(data)
-    data.array.forEach(element => {
+
+    data.forEach(element => {
         const option = document.createElement("option")
         option.textContent = element.countryName
         option.value = element.countryShortCode
         country.appendChild(option)
-    });
-    country.addEventListener("change",()=>{
-        console.log(e.target.value)
-        data.forEach((elem)=>{
-            if (elem.countryShortCode === e.target.value){
-                region.options.length = 1
-                elem.regions.forEach((el)=>{
-                    const option = document.createElement("option")
-                    option.textContent = el.Name
-                    option.value = el.ShortCode
-                    region.appendChild(option)
-                })
-            }
+    })
 
+    country.addEventListener("change", (e)=>{
+        region.options.length = 1
+        const elem = data.find(c => c.countryShortCode === e.target.value)
+        if (!elem) return
+        elem.regions.forEach((el)=>{
+            const option = document.createElement("option")
+            option.textContent = el.name
+            option.value = el.shortCode
+            region.appendChild(option)
         })
     })
 }
