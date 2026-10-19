@@ -5,6 +5,7 @@ import "dotenv/config"
 import indexRoutes from "./routes/index.routes.js"
 import loginRoutes from "./routes/login.routes.js"
 import usersRoutes from "./routes/users.routes.js"
+import gameRoutes from "./routes/game.routes.js"
 
 const app = express()
 
@@ -15,6 +16,7 @@ app.use(express.json())
 app.use(indexRoutes)
 app.use(loginRoutes)
 app.use(usersRoutes)
+app.use(gameRoutes)
 
 const PORT = process.env.PORT || 4000
 

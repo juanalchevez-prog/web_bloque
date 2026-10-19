@@ -6,5 +6,6 @@ if (!sessionStorage.username) {
 
 document.getElementById("btnLogout").addEventListener("click", () => {
     sessionStorage.removeItem("username")
+    sessionStorage.removeItem("userId")
     window.location = "../index.html"
 })

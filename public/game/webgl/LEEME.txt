@@ -1,0 +1,4 @@
+Aqui va el build WebGL de Unity (File > Build Profiles > Web > Build, y elegir esta carpeta).
+Debe quedar webgl/index.html junto a las carpetas Build y TemplateData.
+Si Unity genera archivos comprimidos (.br o .gz), en Player Settings > Publishing Settings
+elige Compression Format = Disabled, porque el servidor de Express no los sirve comprimidos.

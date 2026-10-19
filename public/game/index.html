@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Juego</title>
+</head>
+<!--
+    API que usa el videojuego (backend en el puerto 4000)
+
+    ruta get: http://localhost:4000/game/user_id
+    body: {name, points}   (es la respuesta que regresa la API)
+
+    ruta put: http://localhost:4000/game/user_id
+    body: {points}
+
+    El ID del usuario se obtiene al iniciar sesion (POST http://localhost:4000/login
+    regresa user.id) y se pasa al videojuego en la URL del iframe: webgl/index.html?id=user_id
+-->
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../index.html">Frontend</a>
+        <ul class="navbar-nav me-auto flex-row gap-3">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="../profile/">Perfil</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">Juego</a></li>
+        </ul>
+        <a class="btn btn-outline-secondary btn-sm" href="#" id="btnLogout">Log Out</a>
+      </div>
+    </nav>
+
+    <div class="container mt-4 text-center">
+        <h1 class="mb-3">Juego</h1>
+        <iframe id="juego" width="960" height="600" style="max-width:100%; border:1px solid #ccc" title="Videojuego"></iframe>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

@@ -20,6 +20,7 @@ const login = async () => {
 
         if (res.ok && data.login === true) {
             sessionStorage.username = data.user.name
+            sessionStorage.userId = data.user.id
             window.location = "/profile/"
         } else {
             alert(data.message || "credenciales incorrectas")
